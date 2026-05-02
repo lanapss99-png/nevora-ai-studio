@@ -122,6 +122,48 @@ export default function App() {
         fontFamily: "Arial, sans-serif",
       }}
     >
+      <style>
+        {`
+          .premium-card {
+            transition: all 0.5s ease;
+            will-change: transform, box-shadow, background;
+          }
+
+          .premium-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 24px 70px rgba(207, 181, 59, 0.22);
+            border-color: rgba(207, 181, 59, 0.45) !important;
+            background: rgba(255, 255, 255, 0.075) !important;
+          }
+
+          .premium-title {
+            transition: color 0.5s ease;
+          }
+
+          .premium-card:hover .premium-title {
+            color: #CFB53B;
+          }
+
+          .project-card {
+            transition: all 0.5s ease;
+          }
+
+          .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(207, 181, 59, 0.16);
+            border-color: rgba(207, 181, 59, 0.35) !important;
+          }
+
+          .project-card img {
+            transition: transform 0.5s ease;
+          }
+
+          .project-card:hover img {
+            transform: scale(1.04);
+          }
+        `}
+      </style>
+
       <section
         style={{
           minHeight: "100vh",
@@ -179,34 +221,11 @@ export default function App() {
               marginTop: "36px",
             }}
           >
-            <a
-              href="#work"
-              style={{
-                background: "white",
-                color: "black",
-                textDecoration: "none",
-                borderRadius: "999px",
-                padding: "18px 32px",
-                fontSize: "16px",
-                display: "inline-block",
-              }}
-            >
+            <a href="#work" style={buttonPrimary}>
               View portfolio
             </a>
 
-            <a
-              href="#services"
-              style={{
-                background: "transparent",
-                color: "white",
-                textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.25)",
-                borderRadius: "999px",
-                padding: "18px 32px",
-                fontSize: "16px",
-                display: "inline-block",
-              }}
-            >
+            <a href="#services" style={buttonSecondary}>
               View services
             </a>
 
@@ -214,79 +233,24 @@ export default function App() {
               href="https://www.instagram.com/nevora.ai/"
               target="_blank"
               rel="noreferrer"
-              style={{
-                background: "transparent",
-                color: "white",
-                textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.25)",
-                borderRadius: "999px",
-                padding: "18px 32px",
-                fontSize: "16px",
-                display: "inline-block",
-              }}
+              style={buttonSecondary}
             >
               Instagram
             </a>
 
-            <a
-              href="mailto:nevora.aistudio@gmail.com"
-              style={{
-                background: "transparent",
-                color: "white",
-                textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.25)",
-                borderRadius: "999px",
-                padding: "18px 32px",
-                fontSize: "16px",
-                display: "inline-block",
-              }}
-            >
+            <a href="mailto:nevora.aistudio@gmail.com" style={buttonSecondary}>
               Email
             </a>
           </div>
         </div>
       </section>
 
-      <section
-        id="work"
-        style={{
-          padding: "100px 40px 80px",
-          background: "#050505",
-        }}
-      >
-        <p
-          style={{
-            letterSpacing: "5px",
-            color: "#b5b5b5",
-            fontSize: "14px",
-            marginBottom: "20px",
-            textAlign: "center",
-          }}
-        >
-          SELECTED WORK
-        </p>
+      <section id="work" style={{ padding: "100px 40px 80px" }}>
+        <p style={sectionLabel}>SELECTED WORK</p>
 
-        <h2
-          style={{
-            fontSize: "clamp(40px, 5vw, 60px)",
-            textAlign: "center",
-            marginBottom: "20px",
-            fontWeight: "700",
-          }}
-        >
-          Featured projects
-        </h2>
+        <h2 style={sectionTitle}>Featured projects</h2>
 
-        <p
-          style={{
-            color: "#cfcfcf",
-            textAlign: "center",
-            maxWidth: "760px",
-            margin: "0 auto 60px",
-            lineHeight: "1.7",
-            fontSize: "18px",
-          }}
-        >
+        <p style={sectionDescription}>
           Two of the strongest visual works from NEVORA.AI — cinematic,
           emotional, and atmosphere-driven.
         </p>
@@ -303,44 +267,42 @@ export default function App() {
           {projects.map((project) => (
             <article
               key={project.title}
+              className="project-card"
               style={{
                 border: "1px solid rgba(255,255,255,0.14)",
                 borderRadius: "28px",
                 padding: "28px",
                 background: "rgba(255,255,255,0.04)",
+                overflow: "hidden",
               }}
             >
-              <img
-                src={project.image}
-                alt={project.title}
+              <div
                 style={{
                   width: "100%",
                   height: "260px",
-                  objectFit: "cover",
                   borderRadius: "20px",
+                  overflow: "hidden",
                   marginBottom: "28px",
-                  display: "block",
                   background: "#111",
                 }}
-              />
-
-              <p
-                style={{
-                  color: "#999",
-                  marginBottom: "10px",
-                  fontSize: "16px",
-                }}
               >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </div>
+
+              <p style={{ color: "#999", marginBottom: "10px", fontSize: "16px" }}>
                 {project.category}
               </p>
 
-              <h3
-                style={{
-                  fontSize: "34px",
-                  marginTop: 0,
-                  marginBottom: "8px",
-                }}
-              >
+              <h3 style={{ fontSize: "34px", marginTop: 0, marginBottom: "8px" }}>
                 {project.title}
               </h3>
 
@@ -384,12 +346,7 @@ export default function App() {
         </div>
       </section>
 
-      <section
-        style={{
-          padding: "70px 40px 100px",
-          background: "#050505",
-        }}
-      >
+      <section style={{ padding: "70px 40px 100px" }}>
         <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
           {projects.map((project) => (
             <div
@@ -460,28 +417,12 @@ export default function App() {
                   <h3 style={{ fontSize: "22px", marginBottom: "12px" }}>
                     Concept
                   </h3>
-                  <p
-                    style={{
-                      color: "#cfcfcf",
-                      lineHeight: "1.8",
-                      fontSize: "17px",
-                    }}
-                  >
-                    {project.concept}
-                  </p>
+                  <p style={paragraph}>{project.concept}</p>
 
                   <h3 style={{ fontSize: "22px", marginBottom: "12px" }}>
                     Process
                   </h3>
-                  <p
-                    style={{
-                      color: "#cfcfcf",
-                      lineHeight: "1.8",
-                      fontSize: "17px",
-                    }}
-                  >
-                    {project.process}
-                  </p>
+                  <p style={paragraph}>{project.process}</p>
                 </div>
 
                 <div>
@@ -512,47 +453,13 @@ export default function App() {
         </div>
       </section>
 
-      <section
-        id="services"
-        style={{
-          padding: "100px 40px",
-          background: "#0b0b0b",
-        }}
-      >
+      <section id="services" style={{ padding: "100px 40px", background: "#0b0b0b" }}>
         <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
-          <p
-            style={{
-              letterSpacing: "5px",
-              color: "#b5b5b5",
-              fontSize: "14px",
-              marginBottom: "20px",
-              textAlign: "center",
-            }}
-          >
-            SERVICES
-          </p>
+          <p style={sectionLabel}>SERVICES</p>
 
-          <h2
-            style={{
-              fontSize: "clamp(40px, 5vw, 60px)",
-              textAlign: "center",
-              marginBottom: "20px",
-              fontWeight: "700",
-            }}
-          >
-            Premium AI production packages
-          </h2>
+          <h2 style={sectionTitle}>Premium AI production packages</h2>
 
-          <p
-            style={{
-              color: "#cfcfcf",
-              textAlign: "center",
-              maxWidth: "760px",
-              margin: "0 auto 60px",
-              lineHeight: "1.7",
-              fontSize: "18px",
-            }}
-          >
+          <p style={sectionDescription}>
             Flexible creative solutions for brands that need cinematic visuals,
             premium digital presence, and consistent AI-powered content.
           </p>
@@ -567,6 +474,7 @@ export default function App() {
             {servicePackages.map((item) => (
               <article
                 key={item.name}
+                className="premium-card"
                 style={{
                   border: "1px solid rgba(255,255,255,0.14)",
                   borderRadius: "30px",
@@ -590,6 +498,7 @@ export default function App() {
                 </p>
 
                 <h3
+                  className="premium-title"
                   style={{
                     fontSize: "34px",
                     lineHeight: "1.1",
@@ -611,16 +520,7 @@ export default function App() {
                   {item.price}
                 </p>
 
-                <p
-                  style={{
-                    color: "#d6d6d6",
-                    lineHeight: "1.7",
-                    fontSize: "17px",
-                    marginBottom: "18px",
-                  }}
-                >
-                  {item.description}
-                </p>
+                <p style={paragraph}>{item.description}</p>
 
                 <p
                   style={{
@@ -674,34 +574,11 @@ export default function App() {
         </div>
       </section>
 
-      <section
-        style={{
-          padding: "90px 40px",
-          background: "#050505",
-        }}
-      >
+      <section style={{ padding: "90px 40px" }}>
         <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
-          <p
-            style={{
-              letterSpacing: "5px",
-              color: "#b5b5b5",
-              fontSize: "14px",
-              marginBottom: "20px",
-              textAlign: "center",
-            }}
-          >
-            STUDIO WORKFLOW
-          </p>
+          <p style={sectionLabel}>STUDIO WORKFLOW</p>
 
-          <h2
-            style={{
-              fontSize: "clamp(38px, 5vw, 54px)",
-              textAlign: "center",
-              marginBottom: "50px",
-            }}
-          >
-            From idea to final cinematic delivery
-          </h2>
+          <h2 style={sectionTitle}>From idea to final cinematic delivery</h2>
 
           <div
             style={{
@@ -720,33 +597,15 @@ export default function App() {
                   background: "rgba(255,255,255,0.04)",
                 }}
               >
-                <p
-                  style={{
-                    color: "#999",
-                    fontSize: "14px",
-                    marginBottom: "10px",
-                  }}
-                >
+                <p style={{ color: "#999", fontSize: "14px", marginBottom: "10px" }}>
                   {item.tool}
                 </p>
 
-                <h3
-                  style={{
-                    fontSize: "24px",
-                    marginTop: 0,
-                    marginBottom: "16px",
-                  }}
-                >
+                <h3 style={{ fontSize: "24px", marginTop: 0, marginBottom: "16px" }}>
                   {item.stage}
                 </h3>
 
-                <p
-                  style={{
-                    color: "#cfcfcf",
-                    lineHeight: "1.7",
-                    marginBottom: 0,
-                  }}
-                >
+                <p style={{ color: "#cfcfcf", lineHeight: "1.7", marginBottom: 0 }}>
                   {item.result}
                 </p>
               </div>
@@ -755,12 +614,7 @@ export default function App() {
         </div>
       </section>
 
-      <section
-        style={{
-          padding: "100px 40px",
-          background: "#050505",
-        }}
-      >
+      <section style={{ padding: "100px 40px" }}>
         <div
           style={{
             maxWidth: "1180px",
@@ -874,3 +728,54 @@ export default function App() {
     </main>
   );
 }
+
+const buttonPrimary = {
+  background: "white",
+  color: "black",
+  textDecoration: "none",
+  borderRadius: "999px",
+  padding: "18px 32px",
+  fontSize: "16px",
+  display: "inline-block",
+};
+
+const buttonSecondary = {
+  background: "transparent",
+  color: "white",
+  textDecoration: "none",
+  border: "1px solid rgba(255,255,255,0.25)",
+  borderRadius: "999px",
+  padding: "18px 32px",
+  fontSize: "16px",
+  display: "inline-block",
+};
+
+const sectionLabel = {
+  letterSpacing: "5px",
+  color: "#b5b5b5",
+  fontSize: "14px",
+  marginBottom: "20px",
+  textAlign: "center",
+};
+
+const sectionTitle = {
+  fontSize: "clamp(40px, 5vw, 60px)",
+  textAlign: "center",
+  marginBottom: "20px",
+  fontWeight: "700",
+};
+
+const sectionDescription = {
+  color: "#cfcfcf",
+  textAlign: "center",
+  maxWidth: "760px",
+  margin: "0 auto 60px",
+  lineHeight: "1.7",
+  fontSize: "18px",
+};
+
+const paragraph = {
+  color: "#cfcfcf",
+  lineHeight: "1.8",
+  fontSize: "17px",
+};
