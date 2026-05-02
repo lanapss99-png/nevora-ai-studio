@@ -112,6 +112,22 @@ const workflow = [
   },
 ];
 
+const whyNevora = [
+  "Cinematic AI direction, not random generation.",
+  "Premium visual mood and consistent brand atmosphere.",
+  "Fast production for luxury, product, fashion, beauty, and automotive brands.",
+  "Full creative workflow: concept, generation, sound, editing, and delivery.",
+];
+
+const brandNeeds = [
+  "Premium product visuals",
+  "AI commercials",
+  "Social media campaigns",
+  "Luxury landing pages",
+  "Cinematic brand storytelling",
+  "Atmospheric campaign concepts",
+];
+
 export default function App() {
   return (
     <main
@@ -120,10 +136,15 @@ export default function App() {
         background: "#050505",
         color: "white",
         fontFamily: "Arial, sans-serif",
+        overflow: "hidden",
       }}
     >
       <style>
         {`
+          html {
+            scroll-behavior: smooth;
+          }
+
           .premium-card {
             transition: all 0.5s ease;
             will-change: transform, box-shadow, background;
@@ -161,6 +182,20 @@ export default function App() {
           .project-card:hover img {
             transform: scale(1.04);
           }
+
+          .quiet-card {
+            transition: all 0.5s ease;
+          }
+
+          .quiet-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(207, 181, 59, 0.35) !important;
+            background: rgba(255, 255, 255, 0.065) !important;
+          }
+
+          .gold-text {
+            color: #CFB53B;
+          }
         `}
       </style>
 
@@ -172,9 +207,20 @@ export default function App() {
           justifyContent: "center",
           padding: "40px",
           textAlign: "center",
+          position: "relative",
         }}
       >
-        <div style={{ maxWidth: "1100px" }}>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(circle at 30% 10%, rgba(207,181,59,0.10), transparent 28%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 24%)",
+            pointerEvents: "none",
+          }}
+        />
+
+        <div style={{ maxWidth: "1100px", position: "relative", zIndex: 1 }}>
           <p
             style={{
               letterSpacing: "5px",
@@ -212,6 +258,19 @@ export default function App() {
             emotionally charged visual storytelling.
           </p>
 
+          <p
+            style={{
+              color: "#cfb53b",
+              fontSize: "15px",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              marginBottom: "34px",
+            }}
+          >
+            Available for selected AI commercial, product visual and luxury
+            brand projects.
+          </p>
+
           <div
             style={{
               display: "flex",
@@ -229,6 +288,10 @@ export default function App() {
               View services
             </a>
 
+            <a href="#contact" style={buttonGold}>
+              Start a project
+            </a>
+
             <a
               href="https://www.instagram.com/nevora.ai/"
               target="_blank"
@@ -237,10 +300,48 @@ export default function App() {
             >
               Instagram
             </a>
+          </div>
+        </div>
+      </section>
 
-            <a href="mailto:nevora.aistudio@gmail.com" style={buttonSecondary}>
-              Email
-            </a>
+      <section
+        style={{
+          padding: "90px 40px",
+          background: "#080808",
+        }}
+      >
+        <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
+          <p style={sectionLabel}>WHY NEVORA.AI</p>
+
+          <h2 style={sectionTitle}>
+            AI visuals with direction, atmosphere, and commercial intent.
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: "18px",
+              marginTop: "50px",
+            }}
+          >
+            {whyNevora.map((item) => (
+              <div
+                key={item}
+                className="quiet-card"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.14)",
+                  borderRadius: "24px",
+                  padding: "24px",
+                  background: "rgba(255,255,255,0.04)",
+                  color: "#d6d6d6",
+                  lineHeight: "1.7",
+                  fontSize: "17px",
+                }}
+              >
+                {item}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -298,11 +399,23 @@ export default function App() {
                 />
               </div>
 
-              <p style={{ color: "#999", marginBottom: "10px", fontSize: "16px" }}>
+              <p
+                style={{
+                  color: "#999",
+                  marginBottom: "10px",
+                  fontSize: "16px",
+                }}
+              >
                 {project.category}
               </p>
 
-              <h3 style={{ fontSize: "34px", marginTop: 0, marginBottom: "8px" }}>
+              <h3
+                style={{
+                  fontSize: "34px",
+                  marginTop: 0,
+                  marginBottom: "8px",
+                }}
+              >
                 {project.title}
               </h3>
 
@@ -453,7 +566,55 @@ export default function App() {
         </div>
       </section>
 
-      <section id="services" style={{ padding: "100px 40px", background: "#0b0b0b" }}>
+      <section
+        style={{
+          padding: "90px 40px",
+          background: "#080808",
+        }}
+      >
+        <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
+          <p style={sectionLabel}>FOR BRANDS THAT NEED</p>
+
+          <h2 style={sectionTitle}>
+            Premium visual content for modern campaigns and digital launches.
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "16px",
+              marginTop: "50px",
+            }}
+          >
+            {brandNeeds.map((need) => (
+              <div
+                key={need}
+                className="quiet-card"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.14)",
+                  borderRadius: "999px",
+                  padding: "18px 22px",
+                  background: "rgba(255,255,255,0.04)",
+                  textAlign: "center",
+                  color: "#d6d6d6",
+                  fontSize: "16px",
+                }}
+              >
+                {need}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="services"
+        style={{
+          padding: "100px 40px",
+          background: "#0b0b0b",
+        }}
+      >
         <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
           <p style={sectionLabel}>SERVICES</p>
 
@@ -590,6 +751,7 @@ export default function App() {
             {workflow.map((item) => (
               <div
                 key={item.stage}
+                className="quiet-card"
                 style={{
                   border: "1px solid rgba(255,255,255,0.14)",
                   borderRadius: "24px",
@@ -597,15 +759,33 @@ export default function App() {
                   background: "rgba(255,255,255,0.04)",
                 }}
               >
-                <p style={{ color: "#999", fontSize: "14px", marginBottom: "10px" }}>
+                <p
+                  style={{
+                    color: "#999",
+                    fontSize: "14px",
+                    marginBottom: "10px",
+                  }}
+                >
                   {item.tool}
                 </p>
 
-                <h3 style={{ fontSize: "24px", marginTop: 0, marginBottom: "16px" }}>
+                <h3
+                  style={{
+                    fontSize: "24px",
+                    marginTop: 0,
+                    marginBottom: "16px",
+                  }}
+                >
                   {item.stage}
                 </h3>
 
-                <p style={{ color: "#cfcfcf", lineHeight: "1.7", marginBottom: 0 }}>
+                <p
+                  style={{
+                    color: "#cfcfcf",
+                    lineHeight: "1.7",
+                    marginBottom: 0,
+                  }}
+                >
                   {item.result}
                 </p>
               </div>
@@ -614,7 +794,7 @@ export default function App() {
         </div>
       </section>
 
-      <section style={{ padding: "100px 40px" }}>
+      <section id="contact" style={{ padding: "100px 40px" }}>
         <div
           style={{
             maxWidth: "1180px",
@@ -635,7 +815,7 @@ export default function App() {
               marginBottom: "20px",
             }}
           >
-            LET’S CREATE
+            START A PROJECT
           </p>
 
           <h2
@@ -658,8 +838,8 @@ export default function App() {
               margin: "0 auto 36px",
             }}
           >
-            Contact NEVORA.AI to discuss AI video, visual concepts, commercial
-            storytelling, and premium brand visuals.
+            Request a visual concept, discuss a premium AI commercial, or build
+            a complete digital experience for your brand.
           </p>
 
           <div
@@ -671,9 +851,7 @@ export default function App() {
             }}
           >
             <a
-              href="https://www.instagram.com/nevora.ai/"
-              target="_blank"
-              rel="noreferrer"
+              href="mailto:nevora.aistudio@gmail.com?subject=Project inquiry for NEVORA.AI"
               style={{
                 background: "black",
                 color: "white",
@@ -684,11 +862,13 @@ export default function App() {
                 display: "inline-block",
               }}
             >
-              Contact on Instagram
+              Request a visual concept
             </a>
 
             <a
-              href="mailto:nevora.aistudio@gmail.com"
+              href="https://www.instagram.com/nevora.ai/"
+              target="_blank"
+              rel="noreferrer"
               style={{
                 background: "transparent",
                 color: "black",
@@ -700,7 +880,7 @@ export default function App() {
                 display: "inline-block",
               }}
             >
-              Email NEVORA.AI
+              Contact on Instagram
             </a>
           </div>
 
@@ -748,6 +928,17 @@ const buttonSecondary = {
   padding: "18px 32px",
   fontSize: "16px",
   display: "inline-block",
+};
+
+const buttonGold = {
+  background: "#CFB53B",
+  color: "black",
+  textDecoration: "none",
+  borderRadius: "999px",
+  padding: "18px 32px",
+  fontSize: "16px",
+  display: "inline-block",
+  fontWeight: "600",
 };
 
 const sectionLabel = {
