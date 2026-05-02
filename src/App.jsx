@@ -4,6 +4,7 @@ const projects = [
     subtitle: "The Aesthetics of the Future",
     category: "AI Video / Luxury Automotive",
     image: "/images/audi-q8-cover.jpg.png",
+    youtube: "https://www.youtube.com/embed/97CBgS4R8Lk",
     concept:
       "The future has presence. A premium electric car visualized through cinematic lighting, elegant motion, and a futuristic luxury atmosphere.",
     process:
@@ -20,6 +21,7 @@ const projects = [
     subtitle: "A Voice of Life in a World of Machines",
     category: "AI Film / Atmospheric Visual Story",
     image: "/images/symphony-rust-cover.jpg.jpeg",
+    youtube: "https://www.youtube.com/embed/3l2LHv8ifUU",
     concept:
       "An emotional cinematic story about the power of art. A world where music grows flowers through rust, silence, and cold technology.",
     process:
@@ -357,12 +359,26 @@ export default function App() {
                 style={{
                   color: "#cfcfcf",
                   lineHeight: "1.8",
-                  marginBottom: 0,
+                  marginBottom: "24px",
                   fontSize: "17px",
                 }}
               >
                 {project.concept}
               </p>
+
+              <a
+                href={project.youtube.replace("embed/", "watch?v=")}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                  borderBottom: "1px solid rgba(255,255,255,0.4)",
+                  fontSize: "16px",
+                }}
+              >
+                Watch video
+              </a>
             </article>
           ))}
         </div>
@@ -407,19 +423,31 @@ export default function App() {
                 {project.title}: {project.subtitle}
               </h2>
 
-              <img
-                src={project.image}
-                alt={project.title}
+              <div
                 style={{
+                  position: "relative",
                   width: "100%",
-                  maxHeight: "620px",
-                  objectFit: "cover",
+                  paddingTop: "56.25%",
                   borderRadius: "24px",
+                  overflow: "hidden",
                   marginBottom: "36px",
-                  display: "block",
                   background: "#111",
                 }}
-              />
+              >
+                <iframe
+                  src={project.youtube}
+                  title={project.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: "0",
+                  }}
+                />
+              </div>
 
               <div
                 style={{
