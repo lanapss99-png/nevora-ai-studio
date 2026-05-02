@@ -89,6 +89,33 @@ const servicePackages = [
   },
 ];
 
+const capabilities = [
+  {
+    title: "Website Development",
+    text: "Premium landing pages, portfolio websites, and cinematic digital experiences for brands and creative professionals.",
+  },
+  {
+    title: "Presentation Design",
+    text: "Corporate presentations, investor decks, sales presentations, and visual pitch materials with a refined premium structure.",
+  },
+  {
+    title: "Logo Animation",
+    text: "Elegant animated logo intros, brand motion elements, and subtle identity accents for videos, websites, and launches.",
+  },
+  {
+    title: "Corporate & Sales Decks",
+    text: "High-end business presentations designed for clarity, trust, visual hierarchy, and premium brand positioning.",
+  },
+  {
+    title: "Architectural Exterior Renders",
+    text: "AI-enhanced exterior renders of buildings, residential concepts, commercial spaces, and district visualizations.",
+  },
+  {
+    title: "Campaign Visual Assets",
+    text: "AI-generated images, social media visuals, launch materials, atmospheric concepts, and brand content systems.",
+  },
+];
+
 const workflow = [
   {
     stage: "Concept & Scripting",
@@ -115,8 +142,8 @@ const workflow = [
 const whyNevora = [
   "Cinematic AI direction, not random generation.",
   "Premium visual mood and consistent brand atmosphere.",
-  "Fast production for luxury, product, fashion, beauty, and automotive brands.",
-  "Full creative workflow: concept, generation, sound, editing, and delivery.",
+  "Fast production for luxury, product, fashion, beauty, real estate, and automotive brands.",
+  "Full creative workflow: concept, generation, sound, editing, web, presentations, and delivery.",
 ];
 
 const brandNeeds = [
@@ -124,8 +151,12 @@ const brandNeeds = [
   "AI commercials",
   "Social media campaigns",
   "Luxury landing pages",
+  "Corporate presentations",
+  "Sales presentations",
+  "Logo animation",
+  "Exterior building renders",
+  "District visualizations",
   "Cinematic brand storytelling",
-  "Atmospheric campaign concepts",
 ];
 
 export default function App() {
@@ -253,9 +284,10 @@ export default function App() {
               margin: "32px auto",
             }}
           >
-            NEVORA.AI creates atmospheric AI videos, product visuals, and
-            commercial concepts for brands that need premium, modern, and
-            emotionally charged visual storytelling.
+            NEVORA.AI creates atmospheric AI videos, premium websites,
+            presentations, architectural renders, product visuals, and
+            commercial concepts for brands that need modern and emotionally
+            charged visual storytelling.
           </p>
 
           <p
@@ -267,8 +299,8 @@ export default function App() {
               marginBottom: "34px",
             }}
           >
-            Available for selected AI commercial, product visual and luxury
-            brand projects.
+            Available for selected AI commercial, product visual, real estate
+            and luxury brand projects.
           </p>
 
           <div
@@ -735,6 +767,70 @@ export default function App() {
         </div>
       </section>
 
+      <section
+        style={{
+          padding: "100px 40px",
+          background: "#050505",
+        }}
+      >
+        <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
+          <p style={sectionLabel}>EXTENDED STUDIO CAPABILITIES</p>
+
+          <h2 style={sectionTitle}>
+            Beyond AI video, NEVORA.AI builds complete visual systems.
+          </h2>
+
+          <p style={sectionDescription}>
+            Additional creative services for brands, real estate projects,
+            corporate communication, digital launches, and premium commercial
+            presentation.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "20px",
+            }}
+          >
+            {capabilities.map((item) => (
+              <div
+                key={item.title}
+                className="quiet-card"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.14)",
+                  borderRadius: "26px",
+                  padding: "28px",
+                  background: "rgba(255,255,255,0.04)",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "24px",
+                    marginTop: 0,
+                    marginBottom: "14px",
+                    color: "white",
+                  }}
+                >
+                  {item.title}
+                </h3>
+
+                <p
+                  style={{
+                    color: "#cfcfcf",
+                    lineHeight: "1.75",
+                    fontSize: "16px",
+                    marginBottom: 0,
+                  }}
+                >
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section style={{ padding: "90px 40px" }}>
         <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
           <p style={sectionLabel}>STUDIO WORKFLOW</p>
@@ -838,8 +934,8 @@ export default function App() {
               margin: "0 auto 36px",
             }}
           >
-            Request a visual concept, discuss a premium AI commercial, or build
-            a complete digital experience for your brand.
+            Request a visual concept, discuss a premium AI commercial, design a
+            presentation, or build a complete digital experience for your brand.
           </p>
 
           <div
@@ -903,7 +999,10 @@ export default function App() {
         }}
       >
         <p>© 2026 NEVORA.AI Creative Studio. All rights reserved.</p>
-        <p>AI Video • Creative Direction • Cinematic Brand Concepts</p>
+        <p>
+          AI Video • Websites • Presentations • Logo Animation • Architectural
+          Renders
+        </p>
       </footer>
     </main>
   );
